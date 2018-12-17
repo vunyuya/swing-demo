@@ -7,14 +7,28 @@
  * user guide available at http://gradle.org/docs/2.2.1/userguide/tutorial_java_projects.html
  */
 
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'edu.sc.seis.gradle:launch4j:2.4.4'
+  }
+}
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'edu.sc.seis.launch4j'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+}
+launch4j {
+  mainClassName = 'com.example.myapp.Start'
+  icon = "${projectDir}/icons/myApp.ico"
 }
 
 // In this section you declare the dependencies for your production and test code
